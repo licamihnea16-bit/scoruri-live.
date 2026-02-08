@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoruri Live Fotbal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { background-color: #0f172a; color: white; }
+        .glass-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-2xl mx-auto">
+        <div class="flex justify-between items-center mb-6">
+            <h1 class="text-2xl font-bold flex items-center gap-2">
+                <i class="fa-solid fa-soccer-ball text-green-400"></i> Scoruri Live
+            </h1>
+            <span class="bg-red-500 animate-pulse px-3 py-1 rounded-full text-xs font-bold">LIVE</span>
+        </div>
+
+        <div id="scores-container" class="space-y-4">
+            <div class="glass-card rounded-2xl p-4 text-center">
+                <p class="text-gray-400 italic">Se încarcă meciurile de astăzi...</p>
+            </div>
+        </div>
+
+        <div class="mt-8">
+            <iframe id="fs-api" 
+                src="https://www.scorebat.com/embed/livescore/?token=MTY4OTA4XzE3MDczNTY1OTRfM2U0YmZkOTliOGU5MzU0YmQ0ZGUzZjc2ZGJlZDYxZjU4Zjg5YWM1Yg==" 
+                frameborder="0" width="100%" height="600" 
+                allowfullscreen allow='autoplay; fullscreen' 
+                class="rounded-2xl shadow-2xl overflow-hidden">
+            </iframe>
+        </div>
+
+        <p class="text-center text-gray-500 text-sm mt-8">
+            Actualizat automat la fiecare 60 secunde.
+        </p>
+    </div>
+
+    <script>
+        // Funcție simplă pentru a simula reîmprospătarea
+        function refreshScores() {
+            const iframe = document.getElementById('fs-api');
+            iframe.src = iframe.src;
+            console.log("Scoruri actualizate!");
+        }
+        // Actualizăm la fiecare 5 minute
+        setInterval(refreshScores, 300000);
+    </script>
+</body>
+</html>
